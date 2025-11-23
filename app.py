@@ -83,4 +83,4 @@ st.markdown(
 st.write("")
 
 # Bouton Action
-st.link_button("💳 PAYER MAINTENANT (PayPal)", "https://paypal.me/jbvlle?locale.x=fr_FR&country.x=FR", type="primary", use_container_w
+st.link_button("💳 PAYER MAINTENANT (PayPal)", "https://paypal.me/jbvlle?locale.x=fr_FR&country.x=FR", type="primary", use_container_width=True)
