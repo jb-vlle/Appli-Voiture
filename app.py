@@ -40,13 +40,13 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("**📍 Distance**")
     # J'ai ajouté format="%.1f" pour bien gérer les virgules
-    distance = st.number_input("km", value=50.0, step=0.1, format="%.1f", label_visibility="collapsed")
+    distance = st.number_input("km", value=05.0, step=0.1, format="%.1f", label_visibility="collapsed")
     st.caption(f"Base: {CONSO_FIXE}L/100 • {PRIX_GAZOLE}€")
 
 with col2:
     st.markdown("**👥 Passagers**")
-    nb_personnes = st.slider("Passagers", min_value=1, max_value=7, value=3, label_visibility="collapsed")
-    st.caption("Toi inclus")
+    nb_personnes = st.slider("Passagers", min_value=1, max_value=5, value=3, label_visibility="collapsed")
+    st.caption("Conducteur inclus")
 
 # --- LE COEUR DU PROBLÈME (CORRIGÉ) ---
 # 1. Calcul du coût total de la voiture
@@ -84,3 +84,4 @@ st.write("")
 
 # Bouton Action
 st.link_button("💳 PAYER MAINTENANT (PayPal)", "https://paypal.me/jbvlle?locale.x=fr_FR&country.x=FR", type="primary", use_container_width=True)
+
