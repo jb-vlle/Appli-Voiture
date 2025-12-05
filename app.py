@@ -113,10 +113,11 @@ st.write("")
 col_pay1, col_pay2 = st.columns(2)
 
 with col_pay1:
-    st.info("**💳 CB (SumUp)**\n\n*Seulement sans contact*")
+    st.info("**💳 CB (SumUp)**\n\n*seulement sans contact*")
 
 with col_pay2:
     st.success("**💶 Espèces**\n\n*liquide + monnaie*")
+
 
 
 
