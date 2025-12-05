@@ -8,13 +8,12 @@ PRIX_MINIMUM = 3.00   # Prix plancher par personne
 # Configuration de la page
 st.set_page_config(page_title="JB's Car", page_icon="🚘", layout="centered")
 
-# --- CSS POUR STYLER L'INTERFACE ---
+# --- CSS POUR LE STYLE ---
 st.markdown("""
     <style>
         .block-container {padding-top: 2rem; padding-bottom: 2rem;}
         h1 {margin-bottom: 0rem;}
-        div[data-testid="stMarkdownContainer"] p {font-size: 1.1em;}
-        /* Style personnalisé pour les boites d'info paiement */
+        /* Style des boites de paiement */
         .payment-box {
             border: 1px solid #e0e0e0;
             padding: 15px;
@@ -38,8 +37,6 @@ with st.sidebar:
     st.caption(f"✨ Special Promo : Min {PRIX_MINIMUM}€")
 
 # --- CONTENU PRINCIPAL ---
-
-# Titre
 st.markdown("<h2 style='text-align: center; margin: 0;'>🚘 JB's Car Trip</h2>", unsafe_allow_html=True)
 
 # ESPACE INPUTS
@@ -76,6 +73,47 @@ if nb_personnes > 0:
 else:
     prix_reel_par_tete = 0
 
-# 4. Logique Prix Minimum
+# 4. Logique Prix Minimum (Définition de prix_final et color_price)
 if prix_reel_par_tete < PRIX_MINIMUM:
-    prix
+    prix_final = PRIX_MINIMUM
+    info_text = "⚠️ Forfait minimum appliqué"
+    color_price = "#FF9800" # Orange
+else:
+    prix_final = prix_reel_par_tete
+    info_text = "✅ Prix ajusté (Carburant + Service)"
+    color_price = "#00C853" # Vert
+
+# --- AFFICHAGE PRIX ---
+st.markdown("---")
+
+st.markdown(
+    f"""
+    <div style='text-align: center; padding: 15px; background-color: #f0f2f6; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+        <p style='color: grey; margin:0; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px;'>PRIX PAR PERSONNE</p>
+        <h1 style='font-size: 3.8em; margin: 5px 0; color: {color_price}; font-weight: 800;'>{prix_final:.2f} €</h1>
+        <p style='color: #555; margin:0; font-size: 0.85em;'>{info_text}</p>
+        <p style='color: #aaa; margin-top:5px; font-size: 0.7em;'>(Coût total trajet : {cout_total_trajet:.2f}€)</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.write("")
+st.write("")
+
+# --- SECTION PAIEMENT ---
+st.markdown("### 💳 Règlement")
+
+# 1. Gros bouton PayPal
+st.link_button("📲 PAYER VIA PAYPAL", "https://paypal.me/jbvlle?locale.x=fr_FR&country.x=FR", type="primary", use_container_width=True)
+
+st.write("")
+
+# 2. Options physiques (SumUp & Espèces)
+col_pay1, col_pay2 = st.columns(2)
+
+with col_pay1:
+    st.info("**💳 CB (SumUp)**\n\n*Sans contact accepté*")
+
+with col_pay2:
+    st.success("**💶 Espèces**\n\n*Merci de faire l'appoint*")
