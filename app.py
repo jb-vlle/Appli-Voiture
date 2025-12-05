@@ -2,7 +2,7 @@ import streamlit as st
 
 # --- CONFIGURATION (CONSTANTES) ---
 CONSO_FIXE = 6.0      # L/100km
-PRIX_GAZOLE = 1.700   # €/L
+PRIX_GAZOLE = 1.699   # €/L
 PRIX_MINIMUM = 3.00   # Prix plancher
 
 # Configuration de la page
@@ -84,6 +84,7 @@ st.write("")
 
 # Bouton Action
 st.link_button("💳 PAYER MAINTENANT (PayPal)", "https://paypal.me/jbvlle?locale.x=fr_FR&country.x=FR", type="primary", use_container_width=True)
+
 
 
 
