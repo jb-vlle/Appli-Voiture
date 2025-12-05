@@ -116,5 +116,6 @@ with col_pay1:
     st.info("**💳 CB (SumUp)**\n\n*Seulement sans contact accepté*")
 
 with col_pay2:
-    st.success("**💶 Espèces**)
+    st.success("**💶 Espèces**")
+
 
